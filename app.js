@@ -1,11 +1,32 @@
 // Clear Chats
+var serverUrl;
+function urlchange() {
+  serverUrl = document.getElementById('urlin').value;
+  console.log(serverUrl);
+}
 
-const serverUrl = 'https://e9f8-104-199-136-60.ngrok.io';
 async function train() {
   url = serverUrl + '/llm/train';
   const response = await fetch(url);
   const jsonData = await response.json();
   console.log(jsonData);
+}
+
+async function get_files() {
+  var file_disp = document.getElementById('display_file');
+  var text = '';
+  url = serverUrl + '/get_filenames';
+  const response = await fetch(url);
+  var file_name = await response.json();
+  file_name = file_name['data'];
+  console.log(file_name);
+  for (var x in file_name) {
+    text +=
+      '    <div class="file"><label>' +
+      file_name[x] +
+      '</label><i class="fa-solid fa-trash" style="color: #fafcff;"></i><div>\n';
+  }
+  file_disp.innerHTML += text;
 }
 
 async function postJSON(url, data) {
@@ -38,17 +59,20 @@ async function upload(formData) {
   } catch (error) {
     console.error('Error:', error);
   }
+  get_files();
 }
 
-const formData = new FormData();
-const fileField = document.querySelector('input[type="file"]');
+async function upload_files() {
+  const formData = new FormData();
+  const fileField = document.querySelector('input[type="file"]');
 
-formData.append('username', 'abc123');
-formData.append('avatar', fileField.files[0]);
+  formData.append('username', 'abc123');
+  formData.append('avatar', fileField.files[0]);
 
-console.log(formData);
+  console.log(formData);
 
-upload(formData);
+  upload(formData);
+}
 
 function clear_chat() {
   var chat_area = document.getElementById('chat_area');
@@ -71,7 +95,7 @@ function file() {
     text += '    </div>';
     console.log(file_name);
   }
-  disp_file.innerHTML = text;
+  disp_file.innerHTML += text;
   console.log(disp_file);
 }
 
