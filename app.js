@@ -108,7 +108,7 @@ async function chat() {
   var bot_response = bot_res['data']['response'];
   var chat_area = document.getElementById('chat_area');
   var text = '';
-  text += '   <div class="user_chat">' + user_res + '</div>';
-  text += '   <div class="bot_chat">' + bot_response + '</div>';
+  text += '   <div class ="user_chat"><span class="user_span">' + user_res + '</span></div>';
+  text += '   <div class="bot_chat"><span  >' + bot_res + '</span></div>';
   chat_area.innerHTML += text;
 }
