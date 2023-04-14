@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HSAKA</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/c33097aea5.js" crossorigin="anonymous"></script>
+        
+    </head>
+    <body>
+        <div class="main" id="main">
+            <!-- this is the left side of the page -->
+            <div class="navdraw" id="navdraw">
+                <button class="button" id="new_chat">New chat</button><br>
+                <div class="file_input">
+                    <form action="#">
+                        <input type="file" id="upload_file" name="documents" multiple><br><br>
+                        <input type="submit" value="Upload" id="submit" >
+                    </form>
+                    <div class="display_file" id="display_file">
+                        <!-- file display -->
+                    </div>
+                </div>
+                <button class="delete" id="delete">Clear conversation</button><br>
+                <button class="theme" id="theme">Theme</button>
+                <button class="help" id="help">Get Help</button>
+                <button class="button" id="logout">Train</button>
+                <button class="button" id="logout">Logout</button>
+            </div>
+            <!-- the right side of the page begins from here -->
+            <div class="container" id="container">
+                <div class="chat_area" id="chat_area">
+                   <!-- the chat goes here  -->
+                </div>
+                <div class="search" id="search_bar">
+                        <input type="search"  id="search" placeholder="Send a message...">
+                        <button class="send_btn" id="send_btn"><i class="fa-solid fa-paper-plane" style="color: #ffffff;"></i></button>
+                </div>
+            </div>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
