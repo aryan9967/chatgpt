@@ -34,6 +34,7 @@ body{
     box-shadow: 0px 0px 10px 1px rgb(45, 45, 45) inset ;
 }
 .search{
+    /* display:flex; */
     border-radius:8px;
     background-color:rgb(48, 48, 48) ;
     width:50%;
@@ -61,6 +62,7 @@ body{
     height:100%;
     border-radius:0px 8px 8px 0px;
     cursor: pointer;
+    float:right;
 }
 .spacing{
     height: 30%;
@@ -68,7 +70,7 @@ body{
 .bot_chat{
     text-align: left;
     color:rgb(226, 226, 227);
-    padding:20px 100px;;
+    padding:20px 150px;;
    
     background-color:rgb(71, 71, 94) ;
     margin:5px 20px ;
@@ -79,7 +81,7 @@ body{
     width: 5px;
 }
 ::-webkit-scrollbar-track {
-    background: #4a4a4a;
+    background: rgb(53, 53, 58);
 }
 ::-webkit-scrollbar-thumb {
     background: #888;
@@ -87,7 +89,7 @@ body{
 .user_chat{
     text-align: right;
     color:rgb(226, 226, 227);
-    padding:20px 100px;
+    padding:20px 150px;
     background-color:rgb(84, 84, 96) ;
     
     margin:8px 20px;
@@ -108,7 +110,7 @@ body{
     height:6%;
     width: 96%;
     align-items: center;
-    margin:3% 10px 7% 10px;
+    margin:3% 10px 3% 10px;
     border-radius:8px;
     background-color:rgb(37, 36, 36) ;
     color:rgb(178, 170, 170);
@@ -119,27 +121,29 @@ display: none;
 }
 .bgcolor{
     background-color: rgb(53, 53, 58);
-    margin:4%;
+    margin:4% 4% 0% 4%;
+    border:none;
+    /* outline:none; */
 }
 .navigation{
     display: flex;
-   border-bottom: 1px solid rgb(255, 255, 255);
+   border-bottom: 1px solid rgb(174, 174, 174);
    /* border-radius: 8px; */
    /* margin:10px; */
 
 }
 .file_input{
-    margin:7% 4% 4% 4%;
-
+    margin:7% 4% -1% 4%;
+    /* cursor:pointer; */
 }
 .display_file{
     overflow-y:scroll;  
-    height: 40%;
+    height: 55%;
     color:aliceblue;
-    margin:10px;
+    /* margin:10px; */
     margin-bottom: 20px;
-    border-radius: 8px;
-    padding:15px;
+    border-radius: 0px;
+    /* padding:15px; */
 }
 #urlin:hover{
     background-color: rgb(61, 60, 60) ;
@@ -149,17 +153,18 @@ display: none;
     background-color: rgb(61, 60, 60) ;
     
 }
-.navigation:hover{
+/* .navigation:hover{
     background-color: rgb(21, 21, 21) ;
 
 }
 .display_file:hover{
-    /* background-color: rgb(21, 21, 21); */
+    background-color: rgb(21, 21, 21);
     background-color: rgb(107, 103, 103) ;
-}
+} */
 .bottom_buttons{
     display: flex;
     flex-direction: column;
+    /* align-self: flex-end; */
 }
 .button{
     padding: 12px;
@@ -167,17 +172,69 @@ display: none;
     /* height:6%;
     width: 96%; */
     align-items: center;
-    margin:4px 7px;
-    border-radius:8px;
+    /* margin:4px 7px;
+    border-radius:8px; */
     background-color:rgb(37, 36, 36) ;
     color:rgb(178, 170, 170);
+    cursor:pointer;
 }
 .button:hover{
    
-    background-color: rgb(58, 58, 58) ;
+    background-color:rgb(71, 71, 94)  ;
 
 }
 .button:active{
    
     background-color: rgb(21, 21, 21) ;
 }
+.upload_icon{
+    cursor: pointer;
+}
+#train{
+    cursor: pointer;
+}
+#refresh{
+    cursor: pointer;
+}
+#train:hover{
+   
+    background-color: rgb(86, 86, 86) ;
+
+}
+#refresh:hover{
+   
+    background-color: rgb(86, 86, 86) ;
+
+}
+.upload_icon:hover{
+   
+    background-color: rgb(86, 86, 86) ;
+
+}
+.file{
+    padding: 10px 5px 10px 10px;
+    height:5%;
+}
+.file:hover{
+    background-color: #616161;
+    cursor:pointer;
+}
+.file_name:hover{
+    cursor:pointer;
+}
+#train:active{
+   
+    background-color: rgb(33, 33, 35) ;
+
+}
+#refresh:active{
+   
+    background-color: rgb(33, 33, 35) ;
+
+}
+.upload_icon:active{
+   
+    background-color: rgb(33, 33, 35) ;
+
+}
+
