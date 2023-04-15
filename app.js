@@ -23,7 +23,7 @@ async function get_files() {
   console.log(file_name);
   for (var x in file_name) {
     text +=
-      '    <div class="file"><label>' +
+      '    <div class="file"><label class="file_name">' +
       file_name[x] +
       '</label><i class="fa-solid fa-trash" style="color: #fafcff;"></i><div>\n';
   }
