@@ -1,5 +1,6 @@
 // Clear Chats
 var serverUrl;
+serverUrl = 'https://781b-34-147-85-155.ngrok.io'
 function urlchange() {
   serverUrl = document.getElementById('urlin').value;
   console.log(serverUrl);
@@ -108,7 +109,7 @@ async function chat() {
   var bot_response = bot_res['data']['response'];
   var chat_area = document.getElementById('chat_area');
   var text = '';
-  text += '   <div class="user_chat">' + user_res + '</div>';
-  text += '   <div class="bot_chat">' + bot_response + '</div>';
+  text += '   <div class ="user_chat"><span class="user_span">' + user_res + '</span></div>';
+  text += '   <div class="bot_chat"><span  >' + bot_response + '</span></div>';
   chat_area.innerHTML += text;
 }
