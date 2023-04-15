@@ -1,6 +1,6 @@
 // Clear Chats
 var serverUrl;
-serverUrl = 'https://781b-34-147-85-155.ngrok.io'
+serverUrl = 'https://a4db-34-75-9-242.ngrok.io';
 function urlchange() {
   serverUrl = document.getElementById('urlin').value;
   console.log(serverUrl);
@@ -20,14 +20,61 @@ async function get_files() {
   const response = await fetch(url);
   var file_name = await response.json();
   file_name = file_name['data'];
-  console.log(file_name);
   for (var x in file_name) {
     text +=
       '    <div class="file"><label class="file_name">' +
       file_name[x] +
-      '</label><i class="fa-solid fa-trash" style="color: #fafcff;"></i><div>\n';
+      '</label><i class="fa-solid fa-trash" style="color: #fafcff;" onclick = "deletefile()"></i></div>\n';
   }
   file_disp.innerHTML += text;
+}
+
+async function refresh() {
+  var file_disp = document.getElementById('display_file');
+  var text = '';
+  url = serverUrl + '/get_filenames';
+  const response = await fetch(url);
+  var file_name = await response.json();
+  file_name = file_name['data'];
+  file_disp.innerHTML = '';
+  for (var x in file_name) {
+    text +=
+      '    <div class="file" id="' +
+      file_name[x] +
+      '"><label class="file_name">' +
+      file_name[x] +
+      '</label><i id="' +
+      x +
+      '"class="fa-solid fa-trash" style="color: #fafcff;" onclick = "deletefile()" ></i></div>\n';
+  }
+  file_disp.innerHTML += text;
+}
+
+async function deletefile() {
+  var file_disp = document.getElementById('display_file');
+  file_disp.addEventListener('click', async (e) => {
+    var id = e.target.id;
+    console.log('id:' + id);
+    var icon = document.getElementById(id);
+    var filename = icon.parentNode.id;
+    console.log('filename:' + filename);
+    url = serverUrl + '/remove_file';
+    var data = { filenames: [filename] };
+    var bot_res = await postJSON(url, data);
+    console.log(bot_res);
+    refresh();
+    train();
+    return;
+  });
+}
+
+async function remove_all() {
+  url = serverUrl + '/remove_all';
+  const response = await fetch(url);
+  const jsonData = await response.json();
+  console.log(jsonData);
+  clear_chat();
+  refresh();
 }
 
 async function postJSON(url, data) {
@@ -52,7 +99,7 @@ async function upload(formData) {
   url = serverUrl + '/upload_file';
   try {
     const response = await fetch(url, {
-      method: 'PUT',
+      method: 'POST',
       body: formData,
     });
     const result = await response.json();
@@ -60,17 +107,15 @@ async function upload(formData) {
   } catch (error) {
     console.error('Error:', error);
   }
-  get_files();
+  refresh();
 }
 
 async function upload_files() {
   const formData = new FormData();
   const fileField = document.querySelector('input[type="file"]');
 
-  formData.append('username', 'abc123');
-  formData.append('avatar', fileField.files[0]);
-
-  console.log(formData);
+  //   formData.append('username', 'abc123');
+  formData.append('file', fileField.files[0]);
 
   upload(formData);
 }
@@ -94,22 +139,26 @@ function file() {
     text += '        <button>' + file_name + '</button>';
     text += '        <button>Delete</button>';
     text += '    </div>';
-    console.log(file_name);
   }
   disp_file.innerHTML += text;
-  console.log(disp_file);
 }
 
 async function chat() {
   var srchin = document.getElementById('search');
+  var chat_area = document.getElementById('chat_area');
   var user_res = srchin.value;
+  srchin.value = '';
+  var text = '';
+  text +=
+    '   <div class ="user_chat"><span class="user_span">' +
+    user_res +
+    '</span></div>';
+  chat_area.innerHTML += text;
+  text = '';
   var url = serverUrl + '/llm/inference';
   var data = { prompt: user_res };
   var bot_res = await postJSON(url, data);
   var bot_response = bot_res['data']['response'];
-  var chat_area = document.getElementById('chat_area');
-  var text = '';
-  text += '   <div class ="user_chat"><span class="user_span">' + user_res + '</span></div>';
   text += '   <div class="bot_chat"><span  >' + bot_response + '</span></div>';
   chat_area.innerHTML += text;
 }
