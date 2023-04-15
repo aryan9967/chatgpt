@@ -1,9 +1,28 @@
 // Clear Chats
+var my_time;
+var count = 0;
 var serverUrl;
-serverUrl = 'https://a4db-34-75-9-242.ngrok.io';
+serverUrl = 'https://c3f8-35-234-23-208.ngrok.io';
 function urlchange() {
   serverUrl = document.getElementById('urlin').value;
   console.log(serverUrl);
+}
+
+function pageScroll() { 
+  // If condition to set repeat 
+  if (count < 2) {
+    var objDiv = document.getElementById("chat_area");
+    objDiv.scrollTop = objDiv.scrollTop + 1;
+    if (objDiv.scrollTop == (objDiv.scrollHeight - 61)) {
+      setTimeout(function() {
+        objDiv.scrollTop = 0;
+        count++;
+        }, 1200);
+    }
+    //set scrolling time start
+    my_time = setTimeout('pageScroll()', 10);
+    //set scrolling time end
+  }
 }
 
 async function train() {
@@ -144,6 +163,8 @@ function file() {
 }
 
 async function chat() {
+  var my_time;
+  var count = 0;
   var srchin = document.getElementById('search');
   var chat_area = document.getElementById('chat_area');
   var user_res = srchin.value;
@@ -161,4 +182,5 @@ async function chat() {
   var bot_response = bot_res['data']['response'];
   text += '   <div class="bot_chat"><span  >' + bot_response + '</span></div>';
   chat_area.innerHTML += text;
+  setTimeout('pageScroll()', 1200);
 }
