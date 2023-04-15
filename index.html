@@ -11,23 +11,33 @@
         <div class="main" id="main">
             <!-- this is the left side of the page -->
             <div class="navdraw" id="navdraw">
-                <div class="file_input">
-                    <form action="#">
-                        <input type="file" id="upload_file" value="file" name="documents" multiple><br><br>
-                        <input type="submit" value="Upload" id="submit" >
-                    </form>
-                    <div class="display_file" id="display_file">
-                        <!-- file display -->
+                <input type="text" class="button_url" id="urlin" placeholder="API URL" onchange="urlchange()"><br>
+                <!-- <button class="button" id="new_chat">New chat</button><br><br> -->
+                <div class="navigation">
+                    <div class="file_input">
+                        <form action="#">
+                            <input type="file" id="upload_file" value="file" name="documents" multiple><label for="upload_file" class="upload_icon" title="Upload Files"><i class="fa-solid fa-file-arrow-up" style="color: #ffffff;"></i></label>
+                            <!-- <input type="submit" value="Upload" id="submit" > -->
+                        </form>
                     </div>
+                
+                    <button class="bgcolor" id="train"  onclick="train()" title="Train"><i class="fa-solid fa-user-tie" style="color: #ffffff;"></i></button>
+                    <button class="bgcolor" id="refresh" onclick="get_files()" title="Refresh"><i class="fa-solid fa-rotate" style="color: #ffffff;"></i></button>
                 </div>
-                <button class="button" id="delete" onclick="clear_chat()">Clear conversation</button><br>
-                <button class="button" id="refresh" onclick="get_files()"><i class="fa-solid fa-rotate" style="color: #ffffff;"></i>refresh</button>
-                <div class="spacing"> </div>
-
-                <button class="button" id="theme"><i class="fa-regular fa-sun" style="color: #ffffff;"></i>Theme</button><br><br>
-                <button class="button" id="help"><i class="fa-solid fa-circle-info" style="color: #ffffff;"></i>Get Help</button><br><br>
-                <button class="button" id="train"><i class="fa-solid fa-user-tie" style="color: #ffffff;"></i>Train</button><br><br>
-                <button class="button" id="logout"><i class="fa-solid fa-arrow-right-from-bracket" style="color: #ffffff;"></i>Logout</button>
+                <div class="display_file" id="display_file">
+                
+                    <!-- file display -->
+                </div>
+                
+                
+                
+                <div class="bottom_buttons">
+                    <button class="button" id="delete" onclick="clear_chat()"><i class="fa-regular fa-trash-can" style="color: #ffffff;"></i> Clear conversation</button>
+                    <button class="button" id="clear_session"></i><i class="fa-regular fa-trash-can" style="color: #ffffff;"></i> Clear Session</button>
+                    <button class="button" id="theme"><i class="fa-regular fa-sun" style="color: #ffffff;"></i> Theme</button>
+                    <button class="button" id="help"><i class="fa-solid fa-circle-info" style="color: #ffffff;"></i> Get Help</button>
+                    
+                </div>
             </div>
             <!-- the right side of the page begins from here -->
             <div class="container" id="container">
