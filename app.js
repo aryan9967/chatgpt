@@ -2,22 +2,22 @@
 var my_time;
 var count = 0;
 var serverUrl;
-serverUrl = 'https://c3f8-35-234-23-208.ngrok.io';
+serverUrl = 'https://1190-34-125-165-40.ngrok.io';
 function urlchange() {
   serverUrl = document.getElementById('urlin').value;
   console.log(serverUrl);
 }
 
-function pageScroll() { 
-  // If condition to set repeat 
+function pageScroll() {
+  // If condition to set repeat
   if (count < 2) {
-    var objDiv = document.getElementById("chat_area");
+    var objDiv = document.getElementById('chat_area');
     objDiv.scrollTop = objDiv.scrollTop + 1;
-    if (objDiv.scrollTop == (objDiv.scrollHeight - 61)) {
-      setTimeout(function() {
+    if (objDiv.scrollTop == objDiv.scrollHeight - 61) {
+      setTimeout(function () {
         objDiv.scrollTop = 0;
         count++;
-        }, 1200);
+      }, 1200);
     }
     //set scrolling time start
     my_time = setTimeout('pageScroll()', 10);
@@ -127,6 +127,7 @@ async function upload(formData) {
     console.error('Error:', error);
   }
   refresh();
+  train();
 }
 
 async function upload_files() {
