@@ -1,8 +1,28 @@
 // Clear Chats
 var my_time;
 var count = 0;
+var repeat = 0;
+var res_rep = 0;
+var scrrep = 0;
 var serverUrl;
-serverUrl = 'https://1190-34-125-165-40.ngrok.io';
+serverUrl = 'https://dc42-35-237-211-15.ngrok.io';
+
+function nav() {
+  console.log('click');
+  repeat++;
+  res_rep = repeat % 2;
+  var main = document.getElementById('main');
+  var navdraw = document.getElementById('navdraw');
+  var check = document.getElementById('check');
+  console.log(res_rep);
+  if (res_rep == 1) {
+    navdraw.style.display = 'block';
+    // main.style.flexDirection = 'row';
+  } else {
+    navdraw.style.display = 'none';
+  }
+}
+
 function urlchange() {
   serverUrl = document.getElementById('urlin').value;
   console.log(serverUrl);
@@ -12,17 +32,29 @@ function pageScroll() {
   // If condition to set repeat
   if (count < 2) {
     var objDiv = document.getElementById('chat_area');
+    var navbar = document.getElementById('navbar');
     objDiv.scrollTop = objDiv.scrollTop + 1;
+    var sum = objDiv.getBoundingClientRect().height + objDiv.scrollTop;
+    if (sum >= objDiv.scrollHeight) {
+      return;
+    }
+    scrrep++;
     if (objDiv.scrollTop == objDiv.scrollHeight - 61) {
       setTimeout(function () {
-        objDiv.scrollTop = 0;
+        scrrep++;
         count++;
+        console.log(objDiv.scrollTop);
+        console.log(objDiv.scrollHeight);
       }, 1200);
+      console.log(objDiv.scrollTop);
+      console.log(objDiv.scrollHeight);
     }
     //set scrolling time start
-    my_time = setTimeout('pageScroll()', 10);
+    my_time = setTimeout('pageScroll()', 15);
     //set scrolling time end
+    return;
   }
+  return;
 }
 
 async function train() {
@@ -163,12 +195,27 @@ function file() {
   disp_file.innerHTML += text;
 }
 
+function enter_chat() {
+  var search = document.getElementById('search');
+  search.addEventListener('keydown', check_enter);
+}
+
+function check_enter(e) {
+  if (e.key == 'Enter') {
+    chat();
+    return;
+  }
+}
+
 async function chat() {
   var my_time;
   var count = 0;
   var srchin = document.getElementById('search');
   var chat_area = document.getElementById('chat_area');
   var user_res = srchin.value;
+  if (user_res == '') {
+    return;
+  }
   srchin.value = '';
   var text = '';
   text +=
@@ -176,6 +223,8 @@ async function chat() {
     user_res +
     '</span></div>';
   chat_area.innerHTML += text;
+  srchin.focus();
+  setTimeout('pageScroll()', 1200);
   text = '';
   var url = serverUrl + '/llm/inference';
   var data = { prompt: user_res };
@@ -184,4 +233,5 @@ async function chat() {
   text += '   <div class="bot_chat"><span  >' + bot_response + '</span></div>';
   chat_area.innerHTML += text;
   setTimeout('pageScroll()', 1200);
+  return;
 }

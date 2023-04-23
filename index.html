@@ -5,11 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Knowledge GPT</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://kit.fontawesome.com/c33097aea5.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div class="main" id="main">
             <!-- this is the left side of the page -->
+            <div class="navbar" id="navbar">
+                <input type="checkbox" name="check" id="check" onchange="nav()">
+                <button class="icon_btn">
+                    <label for="check" class="label_check"><i class="fa fa-bars"></i></label>
+                </button>
+            </div>
             <div class="navdraw" id="navdraw">
                 <input type="text" class="button_url" id="urlin" placeholder="API URL" onchange="urlchange()"><br>
                 <!-- <button class="button" id="new_chat">New chat</button><br><br> -->
@@ -45,7 +52,7 @@
                    <!-- the chat goes here  -->
                 </div>
                 <div class="search" id="search_bar">
-                        <input type="search"  id="search" placeholder="Send a message...">
+                        <input type="search"  id="search" placeholder="Send a message..." onfocus="enter_chat()">
                         <button class="send_btn" id="send_btn" onclick="chat()"><i class="fa-solid fa-paper-plane" style="color: #ffffff;"></i></button>
                 </div>
                 
