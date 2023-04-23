@@ -24,8 +24,9 @@ function nav() {
 }
 
 function urlchange() {
-  serverUrl = document.getElementById('urlin').value;
-  console.log(serverUrl);
+  accesToken = document.getElementById('urlin').value;
+  serverUrl = atob(accesToken);
+  // console.log(serverUrl);
 }
 
 function pageScroll() {
