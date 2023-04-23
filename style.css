@@ -1,79 +1,96 @@
-.main{
-    display:flex;
-    flex-direction: row;
-    height:100%;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.navdraw{
-    /* display:flex; */
-    background-color: rgb(53, 53, 58);
-    
-    height:100%;
-    width:25%;
-    
-}
+
 body{
     margin:0px;
     height: 100vh;
     width: 100vw;
 }
+
+.main{
+    display:flex;
+    flex-direction: row;
+    width: 100vw;
+    height:100vh;
+    overflow: hidden;
+}
+
+.navbar {
+    display: none;
+}
+
+.navdraw{
+    /* display:flex; */
+    background-color: rgb(47, 47, 51);
+    
+    height:100vh;
+    width:25vw;
+}
+
 .container{
     /* background-color: rgb(28, 28, 36) ; */
     background-color:rgb(61, 61, 66);
-    width:100%;
+    width:75vw;
+    height: 100vh;
 }
 .chat_area{
-
+    position: relative;
     align-items: center;
-    width:100%;
-    height:83%;
+    width:75vw;
+    height:83vh;
     margin:auto;
     /* padding:1% 5%; */
     /* position:absolute;*/
     overflow-y: scroll; 
+    overflow-x: hidden;
     border-bottom: 1px solid rgb(56, 56, 56);
     box-shadow: 0px 0px 10px 1px rgb(45, 45, 45) inset ;
 }
 .search{
-    /* display:flex; */
-    border-radius:8px;
-    background-color:rgb(48, 48, 48) ;
-    width:50%;
-    height:6.5%;
-    margin:auto;
-    padding:0px;
-    margin-top: 3%;
-    
+    display:flex;
+    /* background-color:rgb(48, 48, 48); */
+    width:75vw;
+    height: 17vh;
+    display: flex;
 }
 #search{
-    height:100%;
-    border-radius:8px 0px 0px 8px;
-    width:93%;
-    margin-right:-5px;
-    background-color:rgb(48, 48, 48) ;
+    width: 35vw;
+    height:8vh;
+    margin-top: 3vh;
+    margin-left: 18vw;
+    /* margin-right:-2%; */
+    background-color:rgb(48, 48, 48);
     border:1px solid rgb(48, 48, 48);
-    padding: 15px;
+    outline: none;
+    border-radius: 8px 0 0 8px;
+    padding: 1vh 1vw;
     color: rgb(178, 170, 170);
-    font-size:90%;
+    font-size: 2.3vh;
 }
 .send_btn{
-    background-color: rgb(48, 48, 48) ;
-    margin-left:2px;
-    width:6.84%;
-    height:100%;
+    background-color: rgb(48, 48, 48);
+    width:3.5vw;
+    height:8vh;
+    margin-top: 3vh;
+    margin-right: 18vw;
     border-radius:0px 8px 8px 0px;
     cursor: pointer;
     float:right;
 }
-.spacing{
+/* .spacing{
     height: 30%;
-}
+} */
 .bot_chat{
+    width: 71.5vw;
     text-align: left;
     color:rgb(226, 226, 227);
-    padding:20px 150px;;
+    padding:2.5vh 8vw;
    
     background-color:rgb(71, 71, 94) ;
-    margin:5px 20px ;
+    margin:1.3vh 1.5vw;
     border-radius:10px;
    
 }
@@ -87,14 +104,15 @@ body{
     background: #888;
 }
 .user_chat{
+    width: 71.5vw;
     text-align: right;
     color:rgb(226, 226, 227);
-    padding:20px 150px;
+    padding:2.5vh 8vw;
     background-color:rgb(84, 84, 96) ;
     
-    margin:8px 20px;
+    margin:1.3vh 1.5vw;
     border-radius:10px;
-    font-size: 90%;
+    font-size: 2.4vh;
 }
 
 /* .user_span{
@@ -107,41 +125,46 @@ body{
 #urlin{
     padding: 8px;
     font-size: 14;
-    height:6%;
-    width: 96%;
+    height:6vh;
+    width: 23vw;
     align-items: center;
-    margin:3% 10px 3% 10px;
+    margin:3vh 1vw 3vh 1vw;
     border-radius:8px;
-    background-color:rgb(37, 36, 36) ;
+    background-color:rgb(37, 36, 36);
     color:rgb(178, 170, 170);
-    
 }
 #upload_file{
 display: none;
 }
 .bgcolor{
-    background-color: rgb(53, 53, 58);
-    margin:4% 4% 0% 4%;
+    background-color: rgb(47, 47, 51);
+    margin:0.5vh 1vw 0vh 1vw;
+    font-size: large;
     border:none;
     /* outline:none; */
 }
 .navigation{
+    width: 25vw;
+    height: 8vh;
     display: flex;
+    margin: 0 0vw 1vh 0vw;
    border-bottom: 1px solid rgba(174, 174, 174, 0.3);
    /* border-radius: 8px; */
    /* margin:10px; */
 
 }
 .file_input{
-    margin:7% 4% -1% 4%;
+    font-size: large;
+    margin:2.5vh 1vw 0vh 1vw;
     /* cursor:pointer; */
 }
 .display_file{
-    overflow-y:scroll;  
-    height: 55%;
+    overflow-y:scroll; 
+    width: 25vw; 
+    height: 50vh;
     color:aliceblue;
     /* margin:10px; */
-    margin-bottom: 20px;
+    margin-bottom: 1vh;
     border-radius: 0px;
     /* padding:15px; */
 }
@@ -162,13 +185,19 @@ display: none;
     background-color: rgb(107, 103, 103) ;
 } */
 .bottom_buttons{
+    width: 25vw;
+    height: 32vh;
     display: flex;
     flex-direction: column;
+    /* left: 0;
+    bottom: 0; */
     /* align-self: flex-end; */
 }
 .button{
-    padding: 12px;
-    font-size: 14;
+    width: 25vw;
+    height: 6.9vh;
+    padding: 2vh 2vw;
+    font-size: 2.3vh;
     /* height:6%;
     width: 96%; */
     align-items: center;
@@ -212,8 +241,9 @@ display: none;
 
 }
 .file{
-    padding: 10px 5px 10px 10px;
-    height:5%;
+    padding: 2vh 1vw 2vh 1vw;
+    width: 24.4vw;
+    height:7vh;
     display:flex;
     justify-content: space-between;
 }
@@ -242,3 +272,103 @@ display: none;
  .file i:hover{
     cursor:pointer;
 } 
+#check {
+    display: none;
+}
+
+@media screen and (max-width:770px) {
+    .main {
+        width: 100vw;
+        height: 100vh;
+        flex-direction: column;
+    }
+    .navbar {
+        width: 100vw;
+        height: 8vh;
+        display: flex;
+        background-color: rgb(53, 53, 58);
+        align-items: center;
+    }
+    .navdraw {
+        display: none;
+        margin-top: 8vh;
+        width: 75vw;
+        height: 92vh;
+        z-index: 100;
+        position: absolute;
+    }
+    #urlin {
+        width: 65vw;
+        height: 6vh;
+        margin: 2vh 30vw 1vh 5vw;
+    }
+    .navigation {
+        width: 75vw;
+        height: 8vh;
+    }
+    .upload_icon {
+        margin: 0 2vw 0 2vw;
+    }   
+    .bgcolor {
+        margin-right: 2vw;
+    }
+    .display_file {
+        width: 75vw;
+        height: 40vh;
+    }
+    .file {
+        width: 74vw;
+        height: 8vh;
+    }
+    .bottom_buttons {
+        width: 75vw;
+        height: 44vh;
+    }
+    .button {
+        width: 75vw;
+        height: 8vh;
+    }
+    .container {
+        width: 100vw;
+        height: 92vh;
+        z-index: 1;
+    }
+    .label_check {
+        width: 13vw;
+        height: 7vh;
+    }
+    .icon_btn {
+        width: 13vw;
+        height: 7vh;
+        background-color: rgb(53, 53, 58);
+        color: #fff;
+        border: none;
+        outline: none;
+        font-size: 2.3vh;
+    }
+    .chat_area {
+        width: 100vw;
+        height: 75vh;
+    }
+    .search {
+        width: 100vw;
+        height: 17vh;
+        justify-content: center;
+    }
+    #search {
+        width: 55vw;
+        height: 8vh;
+    }
+    .send_btn {
+        width: 6vw;
+        height: 8vh;
+    }
+    .user_chat {
+        width: 90vw;
+        margin: 1.5vh 5vw;
+    }
+    .bot_chat {
+        width: 90vw;
+        margin: 1.5vh 5vw;
+    }
+}
